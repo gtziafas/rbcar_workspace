@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/install
+
+Name: rbcar_perception
+Description: Description of rbcar_perception
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ggtz/rbcar_ws/install/lib 
+Requires: 

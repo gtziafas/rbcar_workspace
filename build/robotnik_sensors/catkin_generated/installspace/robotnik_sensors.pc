@@ -1,0 +1,8 @@
+prefix=/home/kaoutsi/rbcar_ws/install
+
+Name: robotnik_sensors
+Description: Description of robotnik_sensors
+Version: 1.1.1
+Cflags: 
+Libs: -L/home/kaoutsi/rbcar_ws/install/lib 
+Requires: 
