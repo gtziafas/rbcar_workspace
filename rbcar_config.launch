@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="depth_topic" default="kinect/depth/image_raw" />
+	<arg name="rgb_topic" default="kinect/rgb/image_raw" />
+
+	<include file="$(find rbcar_gazebo)/launch/rbcar_road2.launch" />
+	<include file="$(find rbcar_robot_control)/launch/rbcar_robot_control.launch" />
+	<include file="$(find rbcar_nav)/launch/move_base.launch" />
+
+	<node pkg="rbcar_perception" type="line_follower.py" name="line_follower" output="screen">
+	  <remap from="/depth_topic" to="$(arg depth_topic)" />
+	  <remap from="/rgb_topic" to="$(arg rgb_topic)" />
+	</node>
+
+	<node pkg="teb_local_planner_tutorials" type="cmd_vel_to_ackermann_drive.py" name="cmd_vel_to_ackermann_drive" output="screen">
+	</node>
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rbcar_description)/launch/rviz_config.rviz"/>
+</launch>
