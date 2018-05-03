@@ -1,1 +1,1 @@
-rbcar_workspace:$ roslaunch rbcar_config.launch
+# $ roslaunch rbcar_config.launch
