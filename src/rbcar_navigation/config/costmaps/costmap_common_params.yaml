@@ -1,0 +1,29 @@
+robot_base_frame: /base_footprint
+#---standard pioneer footprint---
+#---(in meters)---
+#footprint: [ [0.254, -0.0508], [0.1778, -0.0508], [0.1778, -0.1778], [-0.1905, -0.1778], [-0.254, 0], [-0.1905, 0.1778], [0.1778, 0.1778], [0.1778, 0.0508], [0.254, 0.0508] ]
+footprint: [[0.6065,0.6065], [0.6065,0.6368], [1.0917,0.6368], [1.0917,0.4427], [0.94,0.4427], [0.94,0.2459], [1.03,0.2459], [1.03,-0.2459], [0.94,-0.2459], [0.94,-0.4427], [1.0917,-0.4427], [1.0917,-0.6368], [0.6065,-0.6368], [0.6065,-0.6065], [-0.6065,-0.6065], [-0.6065,-0.6368], [-1.0917,-0.6368], [-1.0917,-0.6065], [-1.31,-0.6065], [-1.31,-0.5822], [-1.6133,-0.5822], [-1.6133,0.5822], [-1.31,0.5822], [-1.31,0.6065], [-1.0917,0.6065], [-1.0917,0.6368], [-0.6065,0.6368], [-0.6065,0.6065], [0.6065,0.6065]]
+
+transform_tolerance: 0.2
+map_type: costmap
+
+obstacle_layer:
+ enabled: true
+ obstacle_range: 3.0
+ raytrace_range: 3.5
+ inflation_radius: 0.2
+ track_unknown_space: false
+ combination_method: 1
+
+ observation_sources: laser_scan_sensor
+ laser_scan_sensor: {data_type: LaserScan, topic: scan, marking: true, clearing: true}
+
+
+inflation_layer:
+  enabled:              true
+  cost_scaling_factor:  10.0  # exponential rate at which the obstacle cost drops off (default: 10)
+  inflation_radius:     0.5  # max. distance from an obstacle at which costs are incurred for planning paths.
+
+static_layer:
+  enabled:              true
+  map_topic:            "/map"
