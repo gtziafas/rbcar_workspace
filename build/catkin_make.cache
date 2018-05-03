@@ -1,0 +1,2 @@
+depthcloud_encoder:msgs/ackermann_msgs:msgs/robotnik_msgs:rbcar_common/rbcar_common:rbcar_common/rbcar_description:rbcar_common/rbcar_pad:rbcar_common/robotnik_sensors:rbcar_navigation:rbcar_perception:rbcar_sim/rbcar_control:rbcar_sim/rbcar_gazebo:rbcar_sim/rbcar_joystick:rbcar_sim/rbcar_robot_control:rbcar_sim/rbcar_sim:rbcar_sim/rbcar_sim_bringup:teb_local_planner_tutorials:tutorials
+-DCATKIN_DEVEL_PREFIX=/home/ggtz/rbcar_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ggtz/rbcar_ws/install -G Unix Makefiles
