@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: rbcar_sim_bringup
+Description: Description of rbcar_sim_bringup
+Version: 1.0.4
+Cflags: 
+Libs: -L/home/ggtz/rbcar_ws/devel/lib 
+Requires: 

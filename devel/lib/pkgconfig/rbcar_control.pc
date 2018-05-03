@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: rbcar_control
+Description: Description of rbcar_control
+Version: 1.0.4
+Cflags: 
+Libs: -L/home/ggtz/rbcar_ws/devel/lib 
+Requires: 

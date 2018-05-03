@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: rbcar_nav
+Description: Description of rbcar_nav
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ggtz/rbcar_ws/devel/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: rbcar_pad
+Description: Description of rbcar_pad
+Version: 1.0.5
+Cflags: 
+Libs: -L/home/ggtz/rbcar_ws/devel/lib 
+Requires: 

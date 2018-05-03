@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: robotnik_msgs
+Description: Description of robotnik_msgs
+Version: 0.2.2
+Cflags: -I/home/ggtz/rbcar_ws/devel/include
+Libs: -L/home/ggtz/rbcar_ws/devel/lib 
+Requires: message_runtime std_msgs

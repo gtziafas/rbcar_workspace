@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: rbcar_joystick
+Description: Description of rbcar_joystick
+Version: 1.0.4
+Cflags: 
+Libs: -L/home/ggtz/rbcar_ws/devel/lib 
+Requires: robotnik_msgs ackermann_msgs

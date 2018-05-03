@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: ackermann_msgs
+Description: Description of ackermann_msgs
+Version: 1.0.1
+Cflags: -I/home/ggtz/rbcar_ws/devel/include -I/usr/include
+Libs: -L/home/ggtz/rbcar_ws/devel/lib 
+Requires: message_runtime std_msgs

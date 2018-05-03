@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/devel
+
+Name: depthcloud_encoder
+Description: Description of depthcloud_encoder
+Version: 0.0.5
+Cflags: -I/home/ggtz/rbcar_ws/src/depthcloud_encoder/include
+Libs: -L/home/ggtz/rbcar_ws/devel/lib -ldepthcloud_encoder_lib
+Requires: cv_bridge sensor_msgs image_transport message_filters roscpp

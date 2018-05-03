@@ -1,0 +1,8 @@
+prefix=/home/kaoutsi/rbcar_ws/devel
+
+Name: rbcar_percept
+Description: Description of rbcar_percept
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/kaoutsi/rbcar_ws/devel/lib 
+Requires: 
