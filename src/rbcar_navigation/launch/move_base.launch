@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="cmd_topic" default="cmd_vel" />
+
+  <arg name="global" default="navfn" />  <!-- navfn or sbpl-->
+  <arg name="local" default="teb" />  <!--teb or dwa -->
+
+  <arg name="slam" default="false" />
+  <arg name="gmapping" default="false" />
+
+  <arg name="sbpl_resolution" default="0.04" />
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find rbcar_nav)/config/roads2.yaml"/>
+    <remap from="/scan" to="/hokuyo/scan" />
+
+  <!-- Run AMCL -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+  
+  <!-- Launch move base -->
+  <!-- Launch move base -->
+  <node
+    name="move_base"
+    pkg="move_base"
+    type="move_base"
+    respawn="false"
+    output="screen">
+
+    <rosparam
+      file="$(find rbcar_nav)/config/move_base.yaml"
+      command="load"
+      ns="" />
+
+    <rosparam
+      file="$(find rbcar_nav)/config/costmaps/costmap_common_params.yaml"
+      command="load"
+      ns="global_costmap" />
+
+    <rosparam
+      file="$(find rbcar_nav)/config/costmaps/costmap_common_params.yaml"
+      command="load"
+      ns="local_costmap" />
+
+    <rosparam
+      file="$(find rbcar_nav)/config/costmaps/local_costmap_params.yaml"
+      command="load"
+      ns="local_costmap" />
+
+    <rosparam
+      file="$(find rbcar_nav)/config/costmaps/global_costmap_params.yaml"
+      command="load"
+      ns="global_costmap" />
+
+    <rosparam
+      file="$(find rbcar_nav)/config/global_planners/$(arg global)/base_global_planner_params.yaml"
+      command="load" />
+
+    <param
+      name="SBPLLatticePlanner/primitive_filename"
+      value="$(find rbcar_nav)/config/global_planners/sbpl/motion_primitives/four_wheel_steer_$(arg sbpl_resolution).mprim" />
+
+    <rosparam
+      file="$(find rbcar_nav)/config/local_planners/$(arg local)/base_local_planner_params.yaml"
+      command="load" />
+
+    <rosparam
+      file="$(find rbcar_nav)/config/costmaps/costmap_converter_params.yaml"
+      command="load" />
+
+    <!-- remap planner topics for rviz -->
+    <remap
+      from="move_base/TebLocalPlannerROS/local_plan"
+      to="move_base/local_plan" />
+
+    <remap
+      from="move_base/DWAPlannerROS/local_plan"
+      to="move_base/local_plan" />
+
+    <remap
+      from="move_base/RSBandPlannerROS/local_plan"
+      to="move_base/local_plan" />
+
+    <remap
+      from="move_base/AckermannPlannerROS/local_plan"
+      to="move_base/local_plan" />
+
+    <remap
+      from="move_base/NavfnROS/plan"
+      to="move_base/global_plan" />
+
+    <remap
+      from="move_base/SBPLLatticePlanner/plan"
+      to="move_base/global_plan" />
+
+    <remap
+      from="move_base/GlobalPlanner/plan"
+      to="move_base/global_plan" />
+
+    <remap
+      from="/cmd_vel"
+      to="$(arg cmd_topic)" />
+
+  </node>
+
+</launch>
