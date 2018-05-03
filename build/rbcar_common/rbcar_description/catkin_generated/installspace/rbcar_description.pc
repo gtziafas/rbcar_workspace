@@ -1,0 +1,8 @@
+prefix=/home/ggtz/rbcar_ws/install
+
+Name: rbcar_description
+Description: Description of rbcar_description
+Version: 1.0.5
+Cflags: 
+Libs: -L/home/ggtz/rbcar_ws/install/lib 
+Requires: 
