@@ -68,7 +68,7 @@ class line_follower:
 
   def take_turn(self, odom):
     goal_pose = PoseStamped()
-    goal_pose.header.frame_id = "map"
+    goal_pose.header.frame_id = "odom"
     goal_pose.header.stamp = rospy.Time.now()
 
     if abs(odom.pose.pose.orientation.w)>0.95 and abs(odom.pose.pose.orientation.z)<0.2:  #turn to -Y
@@ -91,7 +91,7 @@ class line_follower:
 
   def convert_goal_point_to_pose(self, odom, distance, angle):
     goal_pose = PoseStamped()
-    goal_pose.header.frame_id = "map"
+    goal_pose.header.frame_id = "odom"
     goal_pose.header.stamp = rospy.Time.now()
 
     #decide vehicle direction and goal pose using odometry's orientation
@@ -141,13 +141,13 @@ class line_follower:
       pose = self.convert_goal_point_to_pose(odom, 0, 0)
     
     #transform goal pose to map frame
-    #transform = tf_buf.lookup_transform(pose.header.frame_id,"map",rospy.Time(0),rospy.Duration(0.1))
-    #pose_transformed = tf2_geometry_msgs.do_transform_pose(pose, transform)
+    transform = tf_buf.lookup_transform(pose.header.frame_id,"map",rospy.Time(0),rospy.Duration(0.1))
+    pose_transformed = tf2_geometry_msgs.do_transform_pose(pose, transform)
 
     #publish goal pose and image
     rate = rospy.Rate(30) #20Hz
     try:
-      self.pose_pub.publish(pose)
+      self.pose_pub.publish(pose_transformed)
     except rospy.ROSInterruptException:
       rospy.loginfo("Error in publishing Goal Pose.")
 
